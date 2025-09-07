@@ -1,5 +1,5 @@
-const gameBoard = (function() {
-    const boardState = [
+const board = (function() {
+    const squares = [
         ['X', 'O', 'X'],
         ['X', 'X', 'O'],
         ['X', 'O', 'O'],
