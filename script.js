@@ -1,3 +1,28 @@
+const game = (function() {
+    let startingPlayer;
+    let otherPlayer;
+
+    function start(player1, player2) {
+        validatePlayers(player1, player2);
+        assignPlayerRoles(player1, player2);
+    }
+
+    function validatePlayers(player1, player2) {
+        if (!player1 || !player2) {
+            throw new TypeError('You must specify 2 players.');
+        }
+    }
+
+    function assignPlayerRoles(player1, player2) {
+        startingPlayer = player1;
+        otherPlayer = player2;
+    }
+
+    return {
+        start,
+    };
+})();
+
 const board = (function() {
     const squares = [
         ['X', 'O', 'X'],
@@ -14,3 +39,5 @@ function createPlayer(name) {
 
 const player1 = createPlayer('Player 1');
 const player2 = createPlayer('Player 2');
+
+game.start(player1, player2);
