@@ -1,5 +1,5 @@
 # Project directions
-- Store gameboard as an array inside of a `Gameboard` object
+- Store game board as an array inside of a `GameBoard` object
 - Store players in objects
 - Control the flow of the game itself with an object
 - Minimize global code
@@ -12,7 +12,7 @@
     - Call functions and pass arguments to play the game
     - Don't worry about getting user input yet
 - Create an object that will handle the display logic
-    - Write a function to render the contents of the gameboard array to the page
+    - Write a function to render contents from the game board array to the page
         - You can fill the array with Xs and Os to see what's going on
 - Write the functions that allow players to mark specific squares on the board
     - Prevent players from playing on taken squares
