@@ -26,6 +26,19 @@ const board = (function() {
         ['X', 'X', 'O'],
         ['X', 'O', 'O'],
     ];
+
+    function getSquare(row, column) {
+        return squares[row][column];
+    }
+
+    function markSquare(symbol, row, column) {
+        squares[row][column] = symbol;
+    }
+
+    return {
+        getSquare,
+        markSquare,
+    }
 })();
 
 function createPlayer(name) {
