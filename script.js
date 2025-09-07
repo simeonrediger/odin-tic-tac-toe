@@ -13,6 +13,8 @@ const game = (function() {
         board = gameBoard;
         startingPlayer = player1;
         otherPlayer = player2;
+
+        board.clear();
     }
 
     return {
@@ -27,6 +29,14 @@ const board = (function() {
         ['X', 'O', 'O'],
     ];
 
+    function clear() {
+        for (const row in squares) {
+            for (const column in squares[row]) {
+                squares[row][column] = '';
+            }
+        }
+    }
+
     function getSquare(row, column) {
         return squares[row][column];
     }
@@ -36,6 +46,7 @@ const board = (function() {
     }
 
     return {
+        clear,
         getSquare,
         markSquare,
     };

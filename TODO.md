@@ -22,3 +22,4 @@
 
 # Other
 - Convert demo board state to method
+- Refine `board.clear()` logic
