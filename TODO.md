@@ -21,3 +21,4 @@
 - Display the results when the game is finished
 
 # Other
+- Convert demo board state to method
