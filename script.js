@@ -38,7 +38,7 @@ const board = (function() {
     return {
         getSquare,
         markSquare,
-    }
+    };
 })();
 
 function createPlayer(name) {
