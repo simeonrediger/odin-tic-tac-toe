@@ -1,13 +1,16 @@
 const game = (function() {
+    let board;
     let startingPlayer;
     let otherPlayer;
 
-    function start(player1, player2) {
+    function start(gameBoard, player1, player2) {
 
-        if (!player1 || !player2) {
-            throw new TypeError('You must specify 2 players.');
+        if (!gameBoard || !player1 || !player2) {
+            console.log(gameBoard, player1, player2);
+            throw new TypeError('You must specify a board and 2 players.');
         }
 
+        board = gameBoard;
         startingPlayer = player1;
         otherPlayer = player2;
     }
