@@ -69,6 +69,7 @@ function createPlayer(name) {
 
     return {
         getName: () => name,
+        getPlayerNumber: () => playerNumber,
         setPlayerNumber: number => playerNumber = number,
     };
 }
