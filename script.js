@@ -13,6 +13,8 @@ const gameController = (function() {
         startingPlayer = player1;
         otherPlayer = player2;
 
+        startingPlayer.setPlayerNumber(1);
+        otherPlayer.setPlayerNumber(2);
         board.clear();
     }
 
@@ -66,8 +68,11 @@ function createCell(value = 0) {
 }
 
 function createPlayer(name) {
+    let playerNumber;
+
     return {
         getName: () => name,
+        setPlayerNumber: number => playerNumber = number,
     };
 }
 
