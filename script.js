@@ -2,6 +2,7 @@ const gameController = (function() {
     let board;
     let startingPlayer;
     let otherPlayer;
+    let turn = 0;
 
     function start(gameBoard, player1, player2) {
 
@@ -17,10 +18,20 @@ const gameController = (function() {
         otherPlayer.setPlayerNumber(2);
         board.clear();
         board.print();  // Demo only
+
+        // Demo only
+        playRound(1, 1);
+    }
+
+    function playRound(row, column) {
+        const activePlayer = ++turn % 2 === 1 ? startingPlayer : otherPlayer;
+        board.getCell(row, column).setValue(activePlayer.getPlayerNumber());
+        board.print();  // Demo only
     }
 
     return {
         start,
+        playRound,
     };
 })();
 
