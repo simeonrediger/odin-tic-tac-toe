@@ -23,11 +23,13 @@ const gameController = (function() {
 })();
 
 const board = (function() {
-    const grid = [
-        ['X', 'O', 'X'],
-        ['X', 'X', 'O'],
-        ['X', 'O', 'O'],
-    ];
+    const grid = createGrid(3);
+
+    function createGrid(length) {
+        return Array.from({ length }, () =>
+            Array.from({ length }, () => createCell())
+        );
+    }
 
     function clear() {
         for (const row in grid) {
