@@ -6,7 +6,6 @@ const gameController = (function() {
     function start(gameBoard, player1, player2) {
 
         if (!gameBoard || !player1 || !player2) {
-            console.log(gameBoard, player1, player2);
             throw new TypeError('You must specify a board and 2 players.');
         }
 
