@@ -42,13 +42,10 @@ const gameController = (function() {
 })();
 
 const board = (function() {
-    const grid = createGrid(3);
-
-    function createGrid(length) {
-        return Array.from({ length }, () =>
-            Array.from({ length }, () => createCell())
-        );
-    }
+    const size = 3;
+    const grid = Array.from({ length: size }, () =>
+        Array.from({ length: size }, () => createCell())
+    );
 
     function print() {  // Demo only
         const gridValues = Array.from(grid).map(row =>
