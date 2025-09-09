@@ -23,26 +23,26 @@ const gameController = (function() {
 })();
 
 const board = (function() {
-    const cells = [
+    const grid = [
         ['X', 'O', 'X'],
         ['X', 'X', 'O'],
         ['X', 'O', 'O'],
     ];
 
     function clear() {
-        for (const row in cells) {
-            for (const column in cells[row]) {
-                cells[row][column] = '';
+        for (const row in grid) {
+            for (const column in grid[row]) {
+                grid[row][column] = '';
             }
         }
     }
 
     function getCell(row, column) {
-        return cells[row][column];
+        return grid[row][column];
     }
 
     function updateCell(symbol, row, column) {
-        cells[row][column] = symbol;
+        grid[row][column] = symbol;
     }
 
     return {
