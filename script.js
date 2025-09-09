@@ -56,9 +56,14 @@ const board = (function() {
         console.log(gridString);
     }
 
+    function isFull() {
+        return grid.every(row => row.every(cell => cell.getValue() !== 0));
+    }
+
     return {
         clear: () => grid.forEach(row => row.forEach(cell => cell.clear())),
         getCell: (row, column) => grid[row][column],
+        isFull,
         print,  // Demo only
     };
 })();
