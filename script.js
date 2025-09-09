@@ -43,9 +43,7 @@ const board = (function() {
     }
 
     return {
-        clear: () => grid.forEach(row =>
-            row.forEach(cell => cell.clear())
-        ),
+        clear: () => grid.forEach(row => row.forEach(cell => cell.clear())),
         getCell: (row, column) => grid[row][column],
         print,  // Demo only
     };
