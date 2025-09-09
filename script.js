@@ -32,38 +32,22 @@ const board = (function() {
         );
     }
 
-    function clear() {
-        grid.forEach(row => row.forEach(cell => cell.clear()));
-    }
-
-    function getCell(row, column) {
-        return grid[row][column];
-    }
-
     return {
-        clear,
-        getCell,
+        clear: () => grid.forEach(row => row.forEach(cell => cell.clear())),
+        getCell: (row, column) => grid[row][column],
     };
 })();
 
 function createCell(value = 0) {
 
-    function getValue() {
-        return value;
-    }
-
     function setValue(newValue) {
         value = newValue;
     }
 
-    function clear() {
-        setValue(0);
-    }
-
     return {
-        getValue,
         setValue,
-        clear,
+        getValue: () => value,
+        clear: () => setValue(0),
     };
 }
 
