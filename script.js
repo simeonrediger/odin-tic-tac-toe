@@ -16,6 +16,7 @@ const gameController = (function() {
         startingPlayer.setPlayerNumber(1);
         otherPlayer.setPlayerNumber(2);
         board.clear();
+        board.print();  // Demo only
     }
 
     return {
@@ -32,9 +33,21 @@ const board = (function() {
         );
     }
 
+    function print() {  // Demo only
+        const gridValues = Array.from(grid).map(row =>
+            row.map(cell => cell.getValue())
+        );
+
+        const gridString = gridValues.map(row => row.join(' ')).join('\n');
+        console.log(gridString);
+    }
+
     return {
-        clear: () => grid.forEach(row => row.forEach(cell => cell.clear())),
+        clear: () => grid.forEach(row =>
+            row.forEach(cell => cell.clear())
+        ),
         getCell: (row, column) => grid[row][column],
+        print,  // Demo only
     };
 })();
 

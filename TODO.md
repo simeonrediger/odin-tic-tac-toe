@@ -22,12 +22,8 @@
 
 # Other
 - Convert demo board state to method
-- Refine `board.clear()` logic
-- Refactor magic numbers (e.g., 3 rows and columns)
-- Consider making a `Cell` module
-- Add a `printBoard` function
-- Consider decoupling symbols from cell data
 - Consider implementing default values
 - Consider tucking board and players into game controller module
 - Consider tucking game controller and renderer into app module
-- Consider cell module
+- Add error handling
+- Consider standardized ordering of factory return object properties
