@@ -39,14 +39,9 @@ const board = (function() {
         return grid[row][column];
     }
 
-    function updateCell(symbol, row, column) {
-        grid[row][column] = symbol;
-    }
-
     return {
         clear,
         getCell,
-        updateCell,
     };
 })();
 
