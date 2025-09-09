@@ -1,4 +1,4 @@
-const game = (function() {
+const gameController = (function() {
     let board;
     let startingPlayer;
     let otherPlayer;
@@ -61,4 +61,4 @@ function createPlayer(name) {
 const player1 = createPlayer('Player 1');
 const player2 = createPlayer('Player 2');
 
-game.start(board, player1, player2);
+gameController.start(board, player1, player2);
