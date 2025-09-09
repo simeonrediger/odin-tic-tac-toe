@@ -52,6 +52,22 @@ const board = (function() {
     };
 })();
 
+function createCell(value = 0) {
+
+    function getValue() {
+        return value;
+    }
+
+    function setValue(newValue) {
+        value = newValue;
+    }
+
+    return {
+        getValue,
+        setValue,
+    };
+}
+
 function createPlayer(name) {
     return {
         getName: () => name,
