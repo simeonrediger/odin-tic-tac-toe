@@ -32,11 +32,7 @@ const board = (function() {
     }
 
     function clear() {
-        for (const row in grid) {
-            for (const column in grid[row]) {
-                grid[row][column] = '';
-            }
-        }
+        grid.forEach(row => row.forEach(cell => cell.clear()));
     }
 
     function getCell(row, column) {
@@ -64,9 +60,14 @@ function createCell(value = 0) {
         value = newValue;
     }
 
+    function clear() {
+        setValue(0);
+    }
+
     return {
         getValue,
         setValue,
+        clear,
     };
 }
 
