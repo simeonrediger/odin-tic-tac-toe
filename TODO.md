@@ -29,3 +29,5 @@
 - Consider decoupling symbols from cell data
 - Consider implementing default values
 - Consider tucking board and players into game controller module
+- Consider tucking game controller and renderer into app module
+- Consider cell module

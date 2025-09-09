@@ -23,32 +23,32 @@ const gameController = (function() {
 })();
 
 const board = (function() {
-    const squares = [
+    const cells = [
         ['X', 'O', 'X'],
         ['X', 'X', 'O'],
         ['X', 'O', 'O'],
     ];
 
     function clear() {
-        for (const row in squares) {
-            for (const column in squares[row]) {
-                squares[row][column] = '';
+        for (const row in cells) {
+            for (const column in cells[row]) {
+                cells[row][column] = '';
             }
         }
     }
 
-    function getSquare(row, column) {
-        return squares[row][column];
+    function getCell(row, column) {
+        return cells[row][column];
     }
 
-    function markSquare(symbol, row, column) {
-        squares[row][column] = symbol;
+    function updateCell(symbol, row, column) {
+        cells[row][column] = symbol;
     }
 
     return {
         clear,
-        getSquare,
-        markSquare,
+        getCell,
+        updateCell,
     };
 })();
 
