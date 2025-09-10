@@ -29,6 +29,7 @@ const gameController = (function() {
         otherPlayer.setPlayerNumber(2);
         board.clear();
         board.print(); // Demo
+        promptPlayer(startingPlayer);
 
         // Demo
         playRound(1, 1);
