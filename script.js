@@ -44,26 +44,28 @@ const gameController = (function() {
         const activePlayer = ++turn % 2 === 1 ? startingPlayer : otherPlayer;
         board.getCell(row, column).setValue(activePlayer.getPlayerNumber());
         board.print(); // Demo
-        const winnerPlayerNumber = determineWinner();
+        const winner = determineWinner();
 
-        if (winnerPlayerNumber) {
-            console.log( // Demo
-                `${getPlayerByNumber(winnerPlayerNumber).getName()} wins!`
-            );
+        if (winner) {
+            declareWinner(winner);
         } else if (board.isFull()) {
             declareTie();
         } else {
-            console.log( // Demo
-                `It's ${getNextPlayer(activePlayer).getName()}'s turn.`
-            );
+            promptPlayer(getNextPlayer(activePlayer));
         }
+    }
+
+    function promptPlayer(player) {
+        console.log(`It's ${player.getName()}'s turn.`); // Demo
     }
 
     function determineWinner() {
         for (const sequence of winningSequences) {
             if (sequenceHasWinner(sequence)) {
                 const firstCell = board.getCell(...sequence[0]);
-                return firstCell.getValue();
+                const winnerNumber = firstCell.getValue();
+                const winner = getPlayerByNumber(winnerNumber);
+                return winner;
             }
         }
     }
@@ -80,6 +82,10 @@ const gameController = (function() {
         );
 
         return allSequenceValuesMatch;
+    }
+
+    function declareWinner(player) {
+        console.log(`${player.getName()} wins!`); // Demo
     }
 
     function getPlayerByNumber(number) {
