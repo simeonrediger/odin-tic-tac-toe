@@ -43,7 +43,60 @@ const gameController = (function() {
     function playRound(row, column) {
         const activePlayer = ++turn % 2 === 1 ? startingPlayer : otherPlayer;
         board.getCell(row, column).setValue(activePlayer.getPlayerNumber());
-        board.print();  // Demo only
+        board.print(); // Demo
+        const winnerPlayerNumber = determineWinner();
+
+        if (winnerPlayerNumber) {
+            console.log( // Demo
+                `${getPlayerByNumber(winnerPlayerNumber).getName()} wins!`
+            );
+        } else if (board.isFull()) {
+            declareTie();
+        } else {
+            console.log( // Demo
+                `It's ${getNextPlayer(activePlayer).getName()}'s turn.`
+            );
+        }
+    }
+
+    function determineWinner() {
+        for (const sequence of winningSequences) {
+            if (sequenceHasWinner(sequence)) {
+                const firstCell = board.getCell(...sequence[0]);
+                return firstCell.getValue();
+            }
+        }
+    }
+
+    function sequenceHasWinner(sequence) {
+        const firstCellValue = board.getCell(...sequence[0]).getValue();
+
+        if (firstCellValue === 0) {
+            return false;
+        }
+
+        const allSequenceValuesMatch = sequence.every(coordinates =>
+            board.getCell(...coordinates).getValue() === firstCellValue
+        );
+
+        return allSequenceValuesMatch;
+    }
+
+    function getPlayerByNumber(number) {
+        switch (number) {
+            case 1:
+                return startingPlayer;
+                break;
+            case 2:
+                return otherPlayer;
+                break;
+            default:
+                throw new TypeError(`Invalid player number: ${number}`);
+        }
+    }
+
+    function getNextPlayer(activePlayer) {
+        return activePlayer === startingPlayer ? otherPlayer : startingPlayer;
     }
 
     return {
