@@ -28,9 +28,9 @@ const gameController = (function() {
         startingPlayer.setPlayerNumber(1);
         otherPlayer.setPlayerNumber(2);
         board.clear();
-        board.print();  // Demo only
+        board.print(); // Demo
 
-        // Demo only
+        // Demo
         playRound(1, 1);
         playRound(1, 2);
         playRound(2, 1);
@@ -111,7 +111,7 @@ const board = (function() {
         Array.from({ length: size }, () => createCell())
     );
 
-    function print() {  // Demo only
+    function print() { // Demo
         const gridValues = Array.from(grid).map(row =>
             row.map(cell => cell.getValue())
         );
@@ -128,7 +128,7 @@ const board = (function() {
         clear: () => grid.forEach(row => row.forEach(cell => cell.clear())),
         getCell: (row, column) => grid[row][column],
         isFull,
-        print,  // Demo only
+        print, // Demo
     };
 })();
 

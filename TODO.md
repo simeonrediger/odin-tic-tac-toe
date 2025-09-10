@@ -27,3 +27,7 @@
 - Consider tucking game controller and renderer into app module
 - Add error handling
 - Consider standardized ordering of factory return object properties
+- Consider a single source of truth for the board size
+- Consider if board size variable name should be capitalized
+- Refine function names to adhere to single responsibility principle
+- Look up player by player number
