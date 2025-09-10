@@ -4,6 +4,17 @@ const gameController = (function() {
     let otherPlayer;
     let turn = 0;
 
+    const winningSequences = Object.freeze([
+        [[0, 0], [0, 1], [0, 2]],
+        [[1, 0], [1, 1], [1, 2]],
+        [[2, 0], [2, 1], [2, 2]],
+        [[0, 0], [1, 0], [2, 0]],
+        [[0, 1], [1, 1], [2, 1]],
+        [[0, 2], [1, 2], [2, 2]],
+        [[0, 0], [1, 1], [2, 2]],
+        [[0, 2], [1, 1], [2, 0]],
+    ]);
+
     function start(gameBoard, player1, player2) {
 
         if (!gameBoard || !player1 || !player2) {
