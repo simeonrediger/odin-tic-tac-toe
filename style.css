@@ -54,6 +54,10 @@ body > * {
   background-color: var(--dark-gray);
 }
 
+.cell:hover {
+  background-color: var(--gray);
+}
+
 #player-name-inputs {
   border: none;
 }
