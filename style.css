@@ -12,6 +12,63 @@ body {
 }
 /* End of Reset */
 
+html {
+  --black: #000;
+  --dark-gray: #181818;
+  --gray: #383838;
+  --light-gray: #555;
+  --white: #ccc;
+  --green: rgb(65, 130, 65);
+  --red: rgb(161, 45, 45);
+}
+
+body {
+  background-color: var(--dark-gray);
+  color: var(--white);
+  font-size: 2rem;
+
+  /* display: flex;
+  flex-direction: column; */
+}
+
+input,
+button {
+  font-size: 1em;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.5rem 1.25rem;
+}
+
+input {
+  background-color: var(--gray);
+  color: var(--white);
+}
+
+button {
+  color: var(--white);
+}
+
+.start {
+  background-color: var(--green);
+}
+
+.restart {
+  background-color: var(--red);
+}
+
+#title {
+  text-align: center;
+}
+
+#board {
+  border: 8px solid var(--light-gray);
+  border-radius: 16px;
+}
+
+#announcements {
+  text-align: center;
+}
+
 body {
   display: flex;
   flex-direction: column;
