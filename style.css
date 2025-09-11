@@ -38,10 +38,6 @@ body>* {
   max-width: 50rem;
 }
 
-#title {
-  text-align: center;
-}
-
 #board {
   border: 8px solid var(--light-gray);
   border-radius: 16px;
