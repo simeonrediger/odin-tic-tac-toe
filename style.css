@@ -11,3 +11,33 @@ body {
   font-family: sans-serif;
 }
 /* End of Reset */
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+body > * {
+  margin-block: 0.5rem;
+  max-width: 50rem;
+}
+
+#board {
+  margin-inline: auto;
+  width: 50rem;
+}
+
+#player-name-inputs {
+  border: none;
+}
+
+input {
+  width: 20rem;
+}
+
+button {
+  margin-inline: auto;
+  width: 12rem;
+}
