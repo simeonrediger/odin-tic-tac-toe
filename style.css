@@ -42,7 +42,8 @@ body>* {
   border: 8px solid var(--light-gray);
   border-radius: 16px;
   margin-inline: auto;
-  width: 50rem;
+  width: 30rem;
+  height: 30rem;
 }
 
 #announcements {
