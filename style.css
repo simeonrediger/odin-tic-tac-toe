@@ -44,6 +44,14 @@ body > * {
   margin-inline: auto;
   width: 30rem;
   height: 30rem;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+.cell {
+  background-color: var(--dark-gray);
 }
 
 #player-name-inputs {
