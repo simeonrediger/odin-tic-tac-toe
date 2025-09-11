@@ -23,12 +23,38 @@ html {
 }
 
 body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+
   background-color: var(--dark-gray);
   color: var(--white);
   font-size: 2rem;
+}
 
-  /* display: flex;
-  flex-direction: column; */
+body>* {
+  margin-block: 0.5rem;
+  max-width: 50rem;
+}
+
+#title {
+  text-align: center;
+}
+
+#board {
+  border: 8px solid var(--light-gray);
+  border-radius: 16px;
+  margin-inline: auto;
+  width: 50rem;
+}
+
+#announcements {
+  text-align: center;
+}
+
+#player-name-inputs {
+  border: none;
 }
 
 input,
@@ -42,10 +68,13 @@ button {
 input {
   background-color: var(--gray);
   color: var(--white);
+  width: 20rem;
 }
 
 button {
   color: var(--white);
+  margin-inline: auto;
+  width: 12rem;
 }
 
 .start {
@@ -54,47 +83,4 @@ button {
 
 .restart {
   background-color: var(--red);
-}
-
-#title {
-  text-align: center;
-}
-
-#board {
-  border: 8px solid var(--light-gray);
-  border-radius: 16px;
-}
-
-#announcements {
-  text-align: center;
-}
-
-body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2rem;
-}
-
-body > * {
-  margin-block: 0.5rem;
-  max-width: 50rem;
-}
-
-#board {
-  margin-inline: auto;
-  width: 50rem;
-}
-
-#player-name-inputs {
-  border: none;
-}
-
-input {
-  width: 20rem;
-}
-
-button {
-  margin-inline: auto;
-  width: 12rem;
 }
