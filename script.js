@@ -95,10 +95,8 @@
             switch (number) {
                 case 1:
                     return startingPlayer;
-                    break;
                 case 2:
                     return otherPlayer;
-                    break;
                 default:
                     throw new TypeError(`Invalid player number: ${number}`);
             }
