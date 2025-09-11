@@ -81,6 +81,10 @@ input {
   width: 20rem;
 }
 
+button {
+  cursor: pointer;
+}
+
 #start-button {
   margin-inline: auto;
   width: 12rem;
