@@ -58,13 +58,7 @@
             [[0, 2], [1, 1], [2, 0]],
         ]);
 
-        function start(gameBoard) {
-
-            if (!gameBoard) {
-                throw new TypeError('You must specify a board.');
-            }
-
-            board = gameBoard;
+        function start() {
             startingPlayer = createPlayer('Player 1');
             otherPlayer = createPlayer('Player 2');
             startingPlayer.setPlayerNumber(1);
