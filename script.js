@@ -17,16 +17,15 @@
             [[0, 2], [1, 1], [2, 0]],
         ]);
 
-        function start(gameBoard, player1, player2) {
+        function start(gameBoard) {
 
-            if (!gameBoard || !player1 || !player2) {
-                throw new TypeError('You must specify a board and 2 players.');
+            if (!gameBoard) {
+                throw new TypeError('You must specify a board.');
             }
 
             board = gameBoard;
-            startingPlayer = player1;
-            otherPlayer = player2;
-
+            startingPlayer = createPlayer('Player 1');
+            otherPlayer = createPlayer('Player 2');
             startingPlayer.setPlayerNumber(1);
             otherPlayer.setPlayerNumber(2);
             board.clear();
@@ -152,9 +151,6 @@
             setPlayerNumber: number => playerNumber = number,
         };
     }
-
-    const player1 = createPlayer('Player 1');
-    const player2 = createPlayer('Player 2');
 
     gameController.start(board, player1, player2);
 
