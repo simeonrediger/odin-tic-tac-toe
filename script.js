@@ -19,15 +19,6 @@
             };
         }
 
-        function print() { // Demo
-            const gridValues = Array.from(grid).map(row =>
-                row.map(cell => cell.getValue())
-            );
-
-            const gridString = gridValues.map(row => row.join(' ')).join('\n');
-            console.log(gridString);
-        }
-
         function isFull() {
             return grid.every(row => row.every(cell => cell.getValue() !== 0));
         }
@@ -36,7 +27,6 @@
             clear: () => grid.forEach(row => row.forEach(cell => cell.clear())),
             getCell: (row, column) => grid[row][column],
             isFull,
-            print, // Demo
         };
     })();
 
@@ -65,7 +55,6 @@
             otherPlayer.setPlayerNumber(2);
 
             board.clear();
-            board.print(); // Demo
             promptPlayer(startingPlayer);
         }
 
@@ -82,7 +71,6 @@
         function playRound(row, column) {
             activePlayer = ++turn % 2 === 1 ? startingPlayer : otherPlayer;
             board.getCell(row, column).setValue(activePlayer.getPlayerNumber());
-            board.print(); // Demo
             const winner = determineWinner();
 
             if (winner) {
