@@ -155,6 +155,15 @@
                 .content.querySelector('#other-player-cell'),
         };
 
+        bindEvents();
+
+        function bindEvents() {
+            elements.board.addEventListener('click', handleBoardClick);
+            elements.startButton.addEventListener('click',
+                gameController.start
+            );
+        }
+
         return {
         };
     })();
