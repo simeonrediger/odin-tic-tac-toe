@@ -4,6 +4,7 @@
         let board;
         let startingPlayer;
         let otherPlayer;
+        let activePlayer;
         let turn = 0;
 
         const winningSequences = Object.freeze([
@@ -35,7 +36,7 @@
         }
 
         function playRound(row, column) {
-            const activePlayer = ++turn % 2 === 1 ? startingPlayer : otherPlayer;
+            activePlayer = ++turn % 2 === 1 ? startingPlayer : otherPlayer;
             board.getCell(row, column).setValue(activePlayer.getPlayerNumber());
             board.print(); // Demo
             const winner = determineWinner();
