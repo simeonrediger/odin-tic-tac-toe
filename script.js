@@ -1,5 +1,32 @@
 (function () {
 
+    const board = (function () {
+        const size = 3;
+        const grid = Array.from({ length: size }, () =>
+            Array.from({ length: size }, () => createCell())
+        );
+
+        function print() { // Demo
+            const gridValues = Array.from(grid).map(row =>
+                row.map(cell => cell.getValue())
+            );
+
+            const gridString = gridValues.map(row => row.join(' ')).join('\n');
+            console.log(gridString);
+        }
+
+        function isFull() {
+            return grid.every(row => row.every(cell => cell.getValue() !== 0));
+        }
+
+        return {
+            clear: () => grid.forEach(row => row.forEach(cell => cell.clear())),
+            getCell: (row, column) => grid[row][column],
+            isFull,
+            print, // Demo
+        };
+    })();
+
     const gameController = (function () {
         let board;
         let startingPlayer;
@@ -102,33 +129,6 @@
             start,
             playRound,
             getActivePlayer: () => activePlayer,
-        };
-    })();
-
-    const board = (function () {
-        const size = 3;
-        const grid = Array.from({ length: size }, () =>
-            Array.from({ length: size }, () => createCell())
-        );
-
-        function print() { // Demo
-            const gridValues = Array.from(grid).map(row =>
-                row.map(cell => cell.getValue())
-            );
-
-            const gridString = gridValues.map(row => row.join(' ')).join('\n');
-            console.log(gridString);
-        }
-
-        function isFull() {
-            return grid.every(row => row.every(cell => cell.getValue() !== 0));
-        }
-
-        return {
-            clear: () => grid.forEach(row => row.forEach(cell => cell.clear())),
-            getCell: (row, column) => grid[row][column],
-            isFull,
-            print, // Demo
         };
     })();
 
