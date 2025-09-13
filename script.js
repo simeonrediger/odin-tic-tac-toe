@@ -140,6 +140,21 @@
 
     const displayController = (function () {
 
+        const elements = {
+            board: document.querySelector('#board'),
+            announcements: document.querySelector('#announcements'),
+            playerNameInputs: document.querySelector('#player-name-inputs'),
+            startingPlayerNameInput: document.querySelector(
+                '#starting-player-name'
+            ),
+            otherPlayerNameInput: document.querySelector('#other-player-name'),
+            startButton: document.querySelector('#start-button'),
+            startingPlayerCellTemplate: document.querySelector('template')
+                .content.querySelector('#starting-player-cell'),
+            otherPlayerCellTemplate: document.querySelector('template')
+                .content.querySelector('#other-player-cell'),
+        };
+
         return {
         };
     })();
