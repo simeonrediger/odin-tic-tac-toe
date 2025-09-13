@@ -6,6 +6,19 @@
             Array.from({ length: size }, () => createCell())
         );
 
+        function createCell(value = 0) {
+
+            function setValue(newValue) {
+                value = newValue;
+            }
+
+            return {
+                setValue,
+                getValue: () => value,
+                clear: () => setValue(0),
+            };
+        }
+
         function print() { // Demo
             const gridValues = Array.from(grid).map(row =>
                 row.map(cell => cell.getValue())
@@ -131,19 +144,6 @@
             getActivePlayer: () => activePlayer,
         };
     })();
-
-    function createCell(value = 0) {
-
-        function setValue(newValue) {
-            value = newValue;
-        }
-
-        return {
-            setValue,
-            getValue: () => value,
-            clear: () => setValue(0),
-        };
-    }
 
     function createPlayer(name) {
         let playerNumber;
