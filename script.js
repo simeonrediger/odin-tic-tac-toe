@@ -31,7 +31,6 @@
     })();
 
     const gameController = (function () {
-        let board;
         let startingPlayer;
         let otherPlayer;
         let activePlayer;
