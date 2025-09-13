@@ -32,15 +32,6 @@
             board.clear();
             board.print(); // Demo
             promptPlayer(startingPlayer);
-
-            // Demo
-            playRound(1, 1);
-            playRound(1, 2);
-            playRound(2, 1);
-            playRound(0, 1);
-            playRound(2, 0);
-            playRound(0, 2);
-            playRound(2, 2);
         }
 
         function playRound(row, column) {
