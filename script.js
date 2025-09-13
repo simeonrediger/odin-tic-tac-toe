@@ -101,6 +101,7 @@
         return {
             start,
             playRound,
+            getActivePlayer: () => activePlayer,
         };
     })();
 
