@@ -28,6 +28,7 @@
             otherPlayer = createPlayer('Player 2');
             startingPlayer.setPlayerNumber(1);
             otherPlayer.setPlayerNumber(2);
+
             board.clear();
             board.print(); // Demo
             promptPlayer(startingPlayer);
