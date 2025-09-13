@@ -154,7 +154,4 @@
             setPlayerNumber: number => playerNumber = number,
         };
     }
-
-    gameController.start(board, player1, player2);
-
 })();
