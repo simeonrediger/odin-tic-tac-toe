@@ -75,6 +75,16 @@
             promptPlayer(startingPlayer);
         }
 
+        function createPlayer(name) {
+            let playerNumber;
+
+            return {
+                getName: () => name,
+                getPlayerNumber: () => playerNumber,
+                setPlayerNumber: number => playerNumber = number,
+            };
+        }
+
         function playRound(row, column) {
             activePlayer = ++turn % 2 === 1 ? startingPlayer : otherPlayer;
             board.getCell(row, column).setValue(activePlayer.getPlayerNumber());
@@ -144,14 +154,4 @@
             getActivePlayer: () => activePlayer,
         };
     })();
-
-    function createPlayer(name) {
-        let playerNumber;
-
-        return {
-            getName: () => name,
-            getPlayerNumber: () => playerNumber,
-            setPlayerNumber: number => playerNumber = number,
-        };
-    }
 })();
