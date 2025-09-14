@@ -56,10 +56,8 @@
         ]);
 
         function start(startingPlayerName, otherPlayerName) {
-            startingPlayer = createPlayer(startingPlayerName);
-            otherPlayer = createPlayer(otherPlayerName);
-            startingPlayer.setPlayerNumber(1);
-            otherPlayer.setPlayerNumber(2);
+            startingPlayer = createPlayer(1, startingPlayerName);
+            otherPlayer = createPlayer(2, otherPlayerName);
 
             gameIsOngoing = true;
             activePlayer = startingPlayer;
@@ -71,13 +69,11 @@
             gameIsOngoing = false;
         }
 
-        function createPlayer(name) {
-            let playerNumber;
+        function createPlayer(playerNumber, name) {
 
             return {
                 getName: () => name,
                 getPlayerNumber: () => playerNumber,
-                setPlayerNumber: number => playerNumber = number,
             };
         }
 
