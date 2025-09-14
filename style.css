@@ -75,6 +75,10 @@ body > * {
   border: none;
 }
 
+#announcements {
+  margin-block: 1.05rem;
+}
+
 input,
 button {
   color: var(--white);
