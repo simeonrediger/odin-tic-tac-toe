@@ -189,6 +189,7 @@
             const row = cellElement.dataset.row;
             const column = cellElement.dataset.column;
 
+            addTokenToCell(row, column, gameController.getActivePlayerNumber());
             gameController.playRound(row, column);
         }
 
@@ -213,7 +214,25 @@
             return cellElement;
         }
 
-        return {
-        };
+        function addTokenToCell(row, column, playerNumber) {
+            let tokenTemplate;
+
+            switch (playerNumber) {
+                case 1:
+                    tokenTemplate = elements.startingPlayerTokenTemplate;
+                    break;
+                case 2:
+                    tokenTemplate = elements.otherPlayerTokenTemplate;
+                    break;
+                default:
+                    throw new TypeError(`Invalid player number: ${number}`);
+            }
+
+            const token = tokenTemplate.cloneNode(true);
+            const cellElement = elements.board.querySelector(
+                `[data-row='${row}'][data-column='${column}']`
+            );
+            cellElement.append(token);
+        }
     })();
 })();
