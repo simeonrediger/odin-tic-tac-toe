@@ -50,12 +50,16 @@ body > * {
   grid-template-rows: 1fr 1fr 1fr;
 }
 
+#board:not(.in-play) .cell {
+  cursor: default;
+}
+
 .cell {
   background-color: var(--dark-gray);
   border: 8px solid var(--light-gray);
 }
 
-.cell:hover {
+#board.in-play .cell:hover {
   background-color: var(--gray);
 }
 

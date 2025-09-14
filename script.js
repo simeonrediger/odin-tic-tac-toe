@@ -216,6 +216,7 @@
                 gameController.start();
             }
 
+            toggleBoardHoverAppearance();
             toggleStartButtonAppearance();
         }
 
@@ -238,6 +239,10 @@
             cellElement.dataset.column = column;
             cellElement.ariaLabel = `Play row ${row}, column ${column}`;
             return cellElement;
+        }
+
+        function toggleBoardHoverAppearance() {
+            elements.board.classList.toggle('in-play');
         }
 
         function toggleStartButtonAppearance() {
