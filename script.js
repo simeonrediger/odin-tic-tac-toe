@@ -193,10 +193,12 @@
             ),
             otherPlayerNameInput: document.querySelector('#other-player-name'),
             startButton: document.querySelector('#start-button'),
-            startingPlayerTokenTemplate: document.querySelector('template')
-                .content.querySelector('#starting-player-token'),
-            otherPlayerTokenTemplate: document.querySelector('template')
-                .content.querySelector('#other-player-token'),
+            startingPlayerTokenTemplate: document.querySelector(
+                '#starting-player-token'
+            ).content,
+            otherPlayerTokenTemplate: document.querySelector(
+                '#other-player-token'
+            ).content,
         };
 
         const startTextPrompt = elements.startButton.textContent;

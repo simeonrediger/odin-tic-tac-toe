@@ -71,11 +71,11 @@ body > * {
     brightness(90%);
 }
 
-#starting-player-token {
+.starting-player.token {
   scale: 6;
 }
 
-#other-player-token {
+.other-player.token {
   scale: 4.5;
 }
 
