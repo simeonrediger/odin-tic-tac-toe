@@ -3,35 +3,27 @@
     const board = (function () {
         const size = 3;
         const grid = Array.from({ length: size }, () =>
-            Array.from({ length: size }, () => createCell())
+            new Array(size).fill(0)
         );
 
-        function createCell(value = 0) {
-
-            function setValue(newValue) {
-                value = newValue;
-            }
-
-            return {
-                setValue,
-                getValue: () => value,
-                clear: () => setValue(0),
-            };
-        }
-
-        function getCell(row, column) {
-            return grid[row][column];
-        }
-
         function isFull() {
-            return grid.every(row => row.every(cell => cell.getValue() !== 0));
+            return grid.every(row => row.every(cellValue => cellValue !== 0));
+        }
+
+        function clear() {
+
+            for (let row = 0; row < size; row++) {
+
+                for (let column = 0; column < size; column++) {
+                    grid[row][column] = 0;
+                }
+            }
         }
 
         return {
-            clear: () => grid.forEach(row => row.forEach(cell => cell.clear())),
-            getCellValue: (row, column) => getCell(row, column).getValue(),
-            setCellValue: (row, column, value) =>
-                getCell(row, column).setValue(value),
+            clear,
+            getCellValue: (row, column) => grid[row][column],
+            setCellValue: (row, column, value) => grid[row][column] = value,
             isFull,
         };
     })();

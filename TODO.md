@@ -41,6 +41,7 @@
 - Consider renaming 'round'
 - Consider using accessor method notation
 - Consider changing token colors for a tie
+- Consider encapsulating knowledge that a cell is empty
 
 # Feedback
 - Cell factory is unnecessary, primitives suffice
