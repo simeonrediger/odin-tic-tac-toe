@@ -77,6 +77,7 @@
 
         function playRound(row, column) {
             board.setCellValue(row, column, getActivePlayerNumber());
+            switchActivePlayer();
             const winner = determineWinner();
 
             if (winner) {
@@ -84,14 +85,12 @@
             } else if (board.isFull()) {
                 declareTie();
             } else {
-                promptPlayer(getNextPlayer(activePlayer));
+                promptPlayer();
             }
-
-            switchActivePlayer();
         }
 
         function promptPlayer(player) {
-            console.log(`It's ${player.getName()}'s turn.`); // Demo
+            console.log(`It's ${activePlayer.getName()}'s turn.`); // Demo
         }
 
         function switchActivePlayer() {
@@ -144,10 +143,6 @@
                 default:
                     throw new TypeError(`Invalid player number: ${number}`);
             }
-        }
-
-        function getNextPlayer(activePlayer) {
-            return activePlayer === startingPlayer ? otherPlayer : startingPlayer;
         }
 
         return {
