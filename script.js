@@ -19,13 +19,19 @@
             };
         }
 
+        function getCell(row, column) {
+            return grid[row][column];
+        }
+
         function isFull() {
             return grid.every(row => row.every(cell => cell.getValue() !== 0));
         }
 
         return {
             clear: () => grid.forEach(row => row.forEach(cell => cell.clear())),
-            getCell: (row, column) => grid[row][column],
+            getCellValue: (row, column) => getCell(row, column).getValue(),
+            setCellValue: (row, column, value) =>
+                getCell(row, column).setValue(value),
             isFull,
         };
     })();
@@ -71,7 +77,7 @@
         function playRound(row, column) {
             switchActivePlayer();
 
-            board.getCell(row, column).setValue(getActivePlayerNumber());
+            board.setCellValue(row, column, getActivePlayerNumber());
             const winner = determineWinner();
 
             if (winner) {
@@ -103,8 +109,7 @@
         function determineWinner() {
             for (const sequence of winningSequences) {
                 if (sequenceHasWinner(sequence)) {
-                    const firstCell = board.getCell(...sequence[0]);
-                    const winnerNumber = firstCell.getValue();
+                    const winnerNumber = board.getCellValue(...sequence[0]);
                     const winner = getPlayerByNumber(winnerNumber);
                     return winner;
                 }
@@ -112,14 +117,14 @@
         }
 
         function sequenceHasWinner(sequence) {
-            const firstCellValue = board.getCell(...sequence[0]).getValue();
+            const firstCellValue = board.getCellValue(...sequence[0]);
 
             if (firstCellValue === 0) {
                 return false;
             }
 
             const allSequenceValuesMatch = sequence.every(coordinates =>
-                board.getCell(...coordinates).getValue() === firstCellValue
+                board.getCellValue(...coordinates) === firstCellValue
             );
 
             return allSequenceValuesMatch;
