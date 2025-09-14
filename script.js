@@ -95,7 +95,7 @@
             }
         }
 
-        function promptPlayer(player) {
+        function promptPlayer() {
             console.log(`It's ${activePlayer.getName()}'s turn.`); // Demo
         }
 
