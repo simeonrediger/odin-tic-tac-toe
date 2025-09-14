@@ -90,6 +90,7 @@ input,
   border: none;
   border-radius: 1rem;
   padding: 0.5rem 1.25rem;
+  text-align: center;
 }
 
 input {
