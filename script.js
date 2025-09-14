@@ -163,14 +163,7 @@
         }
 
         function getPlayerByNumber(number) {
-            switch (number) {
-                case 1:
-                    return startingPlayer;
-                case 2:
-                    return otherPlayer;
-                default:
-                    throw new TypeError(`Invalid player number: ${number}`);
-            }
+            return number === 1 ? startingPlayer : otherPlayer;
         }
 
         return {
@@ -338,18 +331,9 @@
         }
 
         function addTokenToCell(row, column, playerNumber) {
-            let tokenTemplate;
-
-            switch (playerNumber) {
-                case 1:
-                    tokenTemplate = elements.startingPlayerTokenTemplate;
-                    break;
-                case 2:
-                    tokenTemplate = elements.otherPlayerTokenTemplate;
-                    break;
-                default:
-                    throw new TypeError(`Invalid player number: ${number}`);
-            }
+            const tokenTemplate = playerNumber === 1 ?
+                elements.startingPlayerTokenTemplate
+                : elements.otherPlayerTokenTemplate;
 
             const token = tokenTemplate.cloneNode(true);
             const cellElement = elements.board.querySelector(
