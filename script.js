@@ -104,12 +104,8 @@
         }
 
         function switchActivePlayer() {
-
-            if (activePlayer === startingPlayer) {
-                activePlayer = otherPlayer;
-            } else {
-                activePlayer = startingPlayer;
-            }
+            activePlayer = activePlayer === startingPlayer
+                ? otherPlayer : startingPlayer;
         }
 
         function determineRoundResult() {
