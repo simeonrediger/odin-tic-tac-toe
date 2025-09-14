@@ -34,7 +34,6 @@
         let startingPlayer;
         let otherPlayer;
         let activePlayer;
-        let turn = 0;
 
         const winningSequences = Object.freeze([
             [[0, 0], [0, 1], [0, 2]],  // top row
@@ -70,7 +69,8 @@
         }
 
         function playRound(row, column) {
-            activePlayer = ++turn % 2 === 1 ? startingPlayer : otherPlayer;
+            switchActivePlayer();
+
             board.getCell(row, column).setValue(activePlayer.getPlayerNumber());
             const winner = determineWinner();
 
@@ -85,6 +85,15 @@
 
         function promptPlayer(player) {
             console.log(`It's ${player.getName()}'s turn.`); // Demo
+        }
+
+        function switchActivePlayer() {
+
+            if (activePlayer === startingPlayer) {
+                activePlayer = otherPlayer;
+            } else {
+                activePlayer = startingPlayer;
+            }
         }
 
         function determineWinner() {
