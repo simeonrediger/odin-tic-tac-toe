@@ -219,6 +219,7 @@
             }
 
             toggleBoardInteractionCues(gameIsBeingStarted);
+            toggleElementVisibility(elements.announcements);
             toggleElementVisibility(elements.playerNameInputs);
             toggleStartButtonAppearance();
         }
