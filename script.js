@@ -61,7 +61,7 @@
 
             gameIsOngoing = true;
             activePlayer = startingPlayer;
-            promptPlayer(startingPlayer);
+            displayController.promptPlayer(activePlayer.getName());
         }
 
         function reset() {
@@ -94,12 +94,8 @@
             } else if (gameIsTied) {
                 declareTie();
             } else {
-                promptPlayer();
+                displayController.promptPlayer(activePlayer.getName());
             }
-        }
-
-        function promptPlayer() {
-            console.log(`It's ${activePlayer.getName()}'s turn.`); // Demo
         }
 
         function switchActivePlayer() {
@@ -273,6 +269,11 @@
             }
         }
 
+        function promptPlayer(playerName) {
+            elements.announcements.textContent =
+                `${playerName}'s turn to play`;
+        }
+
         function toggleBoardInteractionCues(enabled) {
             elements.board.classList[enabled ? 'add' : 'remove']('in-play');
         }
@@ -319,6 +320,7 @@
         }
 
         return {
+            promptPlayer,
             disableBoardInteractionCues: () =>
                 toggleBoardInteractionCues(false),
         }
