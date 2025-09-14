@@ -170,6 +170,12 @@
             if (!event.target.classList.contains('cell')) {
                 return;
             }
+
+            const cellElement = event.target;
+            const row = cellElement.dataset.row;
+            const column = cellElement.dataset.column;
+
+            gameController.playRound(row, column);
         }
 
         function renderBoard() {
