@@ -21,10 +21,8 @@
 - Display the results when the game is finished
 
 # Other
-- Convert demo board state to method
 - Consider implementing default values
-- Consider tucking board and players into game controller module
-- Consider tucking game controller and renderer into app module
+- Consider if board and players should/shouldn't be in game controller module
 - Add error handling
 - Consider standardized ordering of factory return object properties
 - Consider a single source of truth for the board size
@@ -38,3 +36,5 @@
 - Consider using `null` for empty cell values
 - Standardize object literal method notation
 - Fix `getPlayerByPlayerNumber`
+- Consider using `element.closest()`
+- Clean up multi-line expressions

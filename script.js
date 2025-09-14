@@ -85,10 +85,12 @@
             board.setCellValue(row, column, getActivePlayerNumber());
             switchActivePlayer();
             const winner = determineWinner();
+            const gameIsWon = Boolean(winner);
+            const gameIsTied = !gameIsWon && board.isFull();
 
-            if (winner) {
+            if (gameIsWon) {
                 declareWinner(winner);
-            } else if (board.isFull()) {
+            } else if (gameIsTied) {
                 declareTie();
             } else {
                 promptPlayer();
