@@ -275,7 +275,9 @@
         }
 
         function toggleBoardInteractionCues(enabled) {
-            elements.board.classList[enabled ? 'add' : 'remove']('in-play');
+            elements.board.classList[
+                enabled ? 'add' : 'remove'
+            ]('interactable');
         }
 
         function togglePlayerNameInputsVisibility() {

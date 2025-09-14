@@ -50,7 +50,7 @@ body > * {
   grid-template-rows: 1fr 1fr 1fr;
 }
 
-#board:not(.in-play) .cell {
+#board:not(.interactable) .cell {
   cursor: default;
 }
 
@@ -59,7 +59,7 @@ body > * {
   border: 8px solid var(--light-gray);
 }
 
-#board.in-play .cell:hover {
+#board.interactable .cell:hover {
   background-color: var(--gray);
 }
 
