@@ -80,9 +80,14 @@
         function playRound(row, column) {
             board.setCellValue(row, column, getActivePlayerNumber());
             switchActivePlayer();
-            const winner = determineWinner();
-            const gameIsWon = Boolean(winner);
-            const gameIsTied = !gameIsWon && board.isFull();
+
+            const {
+                gameIsWon,
+                gameIsTied,
+                gameIsOver,
+                winner,
+                winningSequence,
+            } = determineRoundResult();
 
             if (gameIsWon || gameIsTied) {
                 gameIsOngoing = false;
@@ -111,14 +116,29 @@
             return activePlayer.getPlayerNumber();
         }
 
-        function determineWinner() {
+        function determineRoundResult() {
+            let winner = null;
+            let winningSequence = null;
+
             for (const sequence of winningSequences) {
                 if (sequenceHasWinner(sequence)) {
                     const winnerNumber = board.getCellValue(...sequence[0]);
-                    const winner = getPlayerByNumber(winnerNumber);
-                    return winner;
+                    winner = getPlayerByNumber(winnerNumber);
+                    winningSequence = sequence;
+                    break;
                 }
             }
+
+            const gameIsWon = Boolean(winner);
+            const gameIsTied = !gameIsWon && board.isFull();
+
+            return {
+                gameIsWon,
+                gameIsTied,
+                gameIsOver: gameIsWon || gameIsTied,
+                winner,
+                winningSequence,
+            };
         }
 
         function sequenceHasWinner(sequence) {
