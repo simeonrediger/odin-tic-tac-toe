@@ -206,13 +206,17 @@
         }
 
         function handleBoardClick(event) {
-            const cellClicked = event.target.classList.contains('cell');
+            const cellElement = event.target.closest('.cell');
+            const containsToken = Boolean(cellElement.querySelector('.token'));
 
-            if (!cellClicked || !gameController.gameIsOngoing()) {
+            if (
+                !cellElement
+                || containsToken
+                || !gameController.gameIsOngoing()
+            ) {
                 return;
             }
 
-            const cellElement = event.target;
             const row = cellElement.dataset.row;
             const column = cellElement.dataset.column;
 
