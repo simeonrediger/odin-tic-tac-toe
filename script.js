@@ -37,7 +37,7 @@
     })();
 
     const gameController = (function () {
-        let gameHasStarted = false;
+        let gameIsOngoing = false;
         let startingPlayer;
         let otherPlayer;
         let activePlayer;
@@ -61,14 +61,14 @@
             startingPlayer.setPlayerNumber(1);
             otherPlayer.setPlayerNumber(2);
 
-            gameHasStarted = true;
+            gameIsOngoing = true;
             activePlayer = startingPlayer;
             promptPlayer(startingPlayer);
         }
 
         function reset() {
             board.clear();
-            gameHasStarted = false;
+            gameIsOngoing = false;
         }
 
         function createPlayer(name) {
@@ -89,7 +89,7 @@
             const gameIsTied = !gameIsWon && board.isFull();
 
             if (gameIsWon || gameIsTied) {
-                gameHasStarted = false;
+                gameIsOngoing = false;
                 displayController.disableBoardInteractionCues();
             }
 
@@ -159,7 +159,7 @@
         }
 
         return {
-            gameHasStarted: () => gameHasStarted,
+            gameIsOngoing: () => gameIsOngoing,
             start,
             reset,
             playRound,
@@ -200,7 +200,7 @@
         function handleBoardClick(event) {
             const cellClicked = event.target.classList.contains('cell');
 
-            if (!cellClicked || !gameController.gameHasStarted()) {
+            if (!cellClicked || !gameController.gameIsOngoing()) {
                 return;
             }
 
