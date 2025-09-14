@@ -166,7 +166,10 @@
         }
 
         function handleBoardClick(event) {
-            // TODO
+
+            if (!event.target.classList.contains('cell')) {
+                return;
+            }
         }
 
         function renderBoard() {
