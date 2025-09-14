@@ -214,7 +214,7 @@
 
         function handleStartButtonClick() {
 
-            if (gameController.gameHasStarted()) {
+            if (boardHasTokens()) {
                 clearTokens();
                 gameController.reset();
             } else {
@@ -223,6 +223,10 @@
 
             toggleBoardInteractionCues(gameIsBeingStarted);
             toggleStartButtonAppearance();
+        }
+
+        function boardHasTokens() {
+            return Boolean(elements.board.querySelector('.token'));
         }
 
         function renderBoard() {
