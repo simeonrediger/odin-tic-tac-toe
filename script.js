@@ -181,6 +181,15 @@
             }
         }
 
+        function createCellButton(row, column) {
+            const cellButton = document.createElement('button');
+            cellButton.classList.add('cell');
+            cellButton.dataset.row = row;
+            cellButton.dataset.column = column;
+            cellButton.ariaLabel = `Play row ${row}, column ${column}`;
+            return cellButton;
+        }
+
         return {
         };
     })();
