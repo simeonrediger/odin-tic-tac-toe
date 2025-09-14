@@ -219,8 +219,8 @@
                 return;
             }
 
-            const row = cellElement.dataset.row;
-            const column = cellElement.dataset.column;
+            const row = Number(cellElement.dataset.row);
+            const column = Number(cellElement.dataset.column);
 
             addTokenToCell(row, column, gameController.getActivePlayerNumber());
             gameController.playRound(row, column);

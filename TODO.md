@@ -44,5 +44,3 @@
 - Consider encapsulating knowledge that a cell is empty
 
 # Feedback
-- Cell factory is unnecessary, primitives suffice
-    - Also remove `board`'s `getCell()`
