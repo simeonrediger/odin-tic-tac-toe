@@ -90,9 +90,9 @@
             }
 
             if (gameIsWon) {
-                declareWinner(winner);
+                displayController.announceWinner(winner.getName());
             } else if (gameIsTied) {
-                declareTie();
+                displayController.announceTie();
             } else {
                 displayController.promptPlayer(activePlayer.getName());
             }
@@ -133,10 +133,6 @@
             );
 
             return allSequenceValuesMatch;
-        }
-
-        function declareWinner(player) {
-            console.log(`${player.getName()} wins!`); // Demo
         }
 
         function getPlayerByNumber(number) {
@@ -274,6 +270,14 @@
                 `${playerName}'s turn to play`;
         }
 
+        function announceWinner(winnerName) {
+            elements.announcements.textContent = `${winnerName} wins!`;
+        }
+
+        function announceTie() {
+            elements.announcements.textContent = `It's a tie!`;
+        }
+
         function toggleBoardInteractionCues(enabled) {
             elements.board.classList[
                 enabled ? 'add' : 'remove'
@@ -323,6 +327,8 @@
 
         return {
             promptPlayer,
+            announceWinner,
+            announceTie,
             disableBoardInteractionCues: () =>
                 toggleBoardInteractionCues(false),
         }
