@@ -95,14 +95,11 @@ button {
 }
 
 #start-button {
+  background-color: var(--green);
   margin-inline: auto;
   width: 12rem;
 }
 
-.start {
-  background-color: var(--green);
-}
-
-.restart {
+#start-button.reset {
   background-color: var(--red);
 }

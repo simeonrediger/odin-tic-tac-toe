@@ -31,3 +31,10 @@
 - Consider if board size variable name should be capitalized
 - Refine function names to adhere to single responsibility principle
 - Look up player by player number
+- Standarize array construction notation
+- Support RTL
+- Consider hardcoding board cells in HTML
+- Consider using order-based cell index instead of row-column lookup
+- Consider using `null` for empty cell values
+- Standardize object literal method notation
+- Fix `getPlayerByPlayerNumber`

@@ -37,6 +37,7 @@
     })();
 
     const gameController = (function () {
+        let gameHasStarted = false;
         let startingPlayer;
         let otherPlayer;
         let activePlayer;
@@ -60,9 +61,14 @@
             startingPlayer.setPlayerNumber(1);
             otherPlayer.setPlayerNumber(2);
 
-            board.clear();
+            gameHasStarted = true;
             activePlayer = startingPlayer;
             promptPlayer(startingPlayer);
+        }
+
+        function reset() {
+            board.clear();
+            gameHasStarted = false;
         }
 
         function createPlayer(name) {
@@ -146,7 +152,9 @@
         }
 
         return {
+            gameHasStarted: () => gameHasStarted,
             start,
+            reset,
             playRound,
             getActivePlayerNumber,
         };
@@ -169,13 +177,16 @@
                 .content.querySelector('#other-player-token'),
         };
 
+        const startTextPrompt = elements.startButton.textContent;
+        const resetTextPrompt = 'Reset';
+
         bindEvents();
         renderBoard();
 
         function bindEvents() {
             elements.board.addEventListener('click', handleBoardClick);
             elements.startButton.addEventListener('click',
-                gameController.start
+                handleStartButtonClick
             );
         }
 
@@ -191,6 +202,18 @@
 
             addTokenToCell(row, column, gameController.getActivePlayerNumber());
             gameController.playRound(row, column);
+        }
+
+        function handleStartButtonClick() {
+
+            if (gameController.gameHasStarted()) {
+                clearTokens();
+                gameController.reset();
+            } else {
+                gameController.start();
+            }
+
+            toggleStartButtonAppearance();
         }
 
         function renderBoard() {
@@ -214,6 +237,16 @@
             return cellElement;
         }
 
+        function toggleStartButtonAppearance() {
+            elements.startButton.classList.toggle('reset');
+
+            if (elements.startButton.textContent === startTextPrompt) {
+                elements.startButton.textContent = resetTextPrompt;
+            } else {
+                elements.startButton.textContent = startTextPrompt;
+            }
+        }
+
         function addTokenToCell(row, column, playerNumber) {
             let tokenTemplate;
 
@@ -233,6 +266,12 @@
                 `[data-row='${row}'][data-column='${column}']`
             );
             cellElement.append(token);
+        }
+
+        function clearTokens() {
+            elements.board.querySelectorAll('.token').forEach(token =>
+                token.remove()
+            );
         }
     })();
 })();
