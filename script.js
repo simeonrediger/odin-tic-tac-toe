@@ -156,6 +156,7 @@
         };
 
         bindEvents();
+        renderBoard();
 
         function bindEvents() {
             elements.board.addEventListener('click', handleBoardClick);
@@ -166,6 +167,18 @@
 
         function handleBoardClick(event) {
             // TODO
+        }
+
+        function renderBoard() {
+            const boardSize = 3;
+
+            for (let row = 0; row < boardSize; row++) {
+
+                for (let column = 0; column < boardSize; column++) {
+                    const cellButton = createCellButton(row, column);
+                    elements.board.append(cellButton);
+                }
+            }
         }
 
         return {
