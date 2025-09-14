@@ -63,7 +63,7 @@ body > * {
   background-color: var(--gray);
 }
 
-.cell.highlighted {
+.token.highlighted {
   filter:  /* Colorization workaround for using SVG images instead of markup */
     sepia(80%)
     saturate(600%)

@@ -236,7 +236,7 @@
                 );
             } else {
                 gameController.reset();
-                removeCellHighlighting();
+                removeTokenHighlighting();
             }
 
             toggleBoardInteractionCues(gameIsBeingStarted);
@@ -286,25 +286,25 @@
 
         function indicateWin(winnerName, winningSequence) {
             elements.announcements.textContent = `${winnerName} wins!`;
-            highlightSequence(winningSequence);
+            highlightTokensInSequence(winningSequence);
         }
 
         function indicateTie() {
             elements.announcements.textContent = `It's a tie!`;
         }
 
-        function highlightSequence(sequence) {
+        function highlightTokensInSequence(sequence) {
 
             for (const [row, column] of sequence) {
                 elements.board.querySelector(
-                    `[data-row='${row}'][data-column='${column}']`
+                    `[data-row='${row}'][data-column='${column}'] .token`
                 ).classList.add('highlighted');
             }
         }
 
-        function removeCellHighlighting() {
-            document.querySelectorAll('.cell.highlighted').forEach(cell =>
-                cell.classList.remove('highlighted')
+        function removeTokenHighlighting() {
+            document.querySelectorAll('.token.highlighted').forEach(token =>
+                token.classList.remove('highlighted')
             );
         }
 
