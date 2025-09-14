@@ -85,7 +85,7 @@
                 gameIsWon,
                 gameIsTied,
                 gameIsOver,
-                winner,
+                winnerName,
                 winningSequence,
             } = determineRoundResult();
 
@@ -95,7 +95,7 @@
             }
 
             if (gameIsWon) {
-                displayController.announceWinner(winner.getName());
+                displayController.announceWinner(winnerName);
             } else if (gameIsTied) {
                 displayController.announceTie();
             } else {
@@ -117,26 +117,26 @@
         }
 
         function determineRoundResult() {
-            let winner = null;
+            let winnerName = null;
             let winningSequence = null;
 
             for (const sequence of winningSequences) {
                 if (sequenceHasWinner(sequence)) {
                     const winnerNumber = board.getCellValue(...sequence[0]);
-                    winner = getPlayerByNumber(winnerNumber);
+                    winnerName = getPlayerByNumber(winnerNumber).getName();
                     winningSequence = sequence;
                     break;
                 }
             }
 
-            const gameIsWon = Boolean(winner);
+            const gameIsWon = Boolean(winnerName);
             const gameIsTied = !gameIsWon && board.isFull();
 
             return {
                 gameIsWon,
                 gameIsTied,
                 gameIsOver: gameIsWon || gameIsTied,
-                winner,
+                winnerName,
                 winningSequence,
             };
         }
