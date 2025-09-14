@@ -61,7 +61,7 @@
 
             gameIsOngoing = true;
             activePlayer = startingPlayer;
-            displayController.promptPlayer(activePlayer.getName());
+            displayController.promptPlayer(activePlayer.name);
         }
 
         function reset() {
@@ -69,12 +69,12 @@
             gameIsOngoing = false;
         }
 
-        function createPlayer(playerNumber, name) {
+        function createPlayer(number, name) {
 
-            return {
-                getName: () => name,
-                getPlayerNumber: () => playerNumber,
-            };
+            return Object.freeze({
+                name,
+                number,
+            });
         }
 
         function playRound(row, column) {
@@ -99,7 +99,7 @@
                 displayController.indicateTie();
             } else {
                 switchActivePlayer();
-                displayController.promptPlayer(activePlayer.getName());
+                displayController.promptPlayer(activePlayer.name);
             }
         }
 
@@ -113,7 +113,7 @@
         }
 
         function getActivePlayerNumber() {
-            return activePlayer.getPlayerNumber();
+            return activePlayer.number;
         }
 
         function determineRoundResult() {
@@ -123,7 +123,7 @@
             for (const sequence of winningSequences) {
                 if (sequenceHasWinner(sequence)) {
                     const winnerNumber = board.getCellValue(...sequence[0]);
-                    winnerName = getPlayerByNumber(winnerNumber).getName();
+                    winnerName = getPlayerByNumber(winnerNumber).name;
                     winningSequence = sequence;
                     break;
                 }

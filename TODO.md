@@ -35,10 +35,13 @@
 - Consider using order-based cell index instead of row-column lookup
 - Consider using `null` for empty cell values
 - Standardize object literal method notation
-- Fix `getPlayerByPlayerNumber`
-- Consider using `element.closest()`
+- Fix `getPlayerByPlayerNumber()`
 - Clean up multi-line expressions
 - Consider best module order
 - Consider renaming 'round'
-- Consider hiding `#announcements` when start text on button is shown
 - Consider using accessor method notation
+- Consider changing token colors for a tie
+
+# Feedback
+- Cell factory is unnecessary, primitives suffice
+    - Also remove `board`'s `getCell()`
