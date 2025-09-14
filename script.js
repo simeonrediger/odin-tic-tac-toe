@@ -42,6 +42,12 @@
         let otherPlayer;
         let activePlayer;
 
+        const roundResults = Object.freeze({
+            CONTINUE: Symbol('continue'),
+            WIN: Symbol('win'),
+            TIE: Symbol('tie'),
+        });
+
         const winningSequences = Object.freeze([
             [[0, 0], [0, 1], [0, 2]],  // top row
             [[1, 0], [1, 1], [1, 2]],  // middle row
@@ -81,25 +87,30 @@
             board.setCellValue(row, column, activePlayer.number);
 
             const {
-                gameIsWon,
-                gameIsTied,
-                gameIsOver,
+                roundResult,
                 winnerName,
                 winningSequence,
             } = determineRoundResult();
 
-            if (gameIsOver) {
+            if (roundResult !== roundResults.CONTINUE) {
                 gameIsOngoing = false;
                 displayController.disableBoardInteractionCues();
             }
 
-            if (gameIsWon) {
-                displayController.indicateWin(winnerName, winningSequence);
-            } else if (gameIsTied) {
-                displayController.indicateTie();
-            } else {
-                switchActivePlayer();
-                displayController.promptPlayer(activePlayer.name);
+            switch (roundResult) {
+
+                case roundResults.CONTINUE:
+                    switchActivePlayer();
+                    displayController.promptPlayer(activePlayer.name);
+                    break;
+
+                case roundResults.WIN:
+                    displayController.indicateWin(winnerName, winningSequence);
+                    break;
+
+                case roundResults.TIE:
+                    displayController.indicateTie();
+                    break;
             }
         }
 
@@ -109,6 +120,7 @@
         }
 
         function determineRoundResult() {
+            let roundResult;
             let winnerName = null;
             let winningSequence = null;
 
@@ -121,13 +133,16 @@
                 }
             }
 
-            const gameIsWon = Boolean(winnerName);
-            const gameIsTied = !gameIsWon && board.isFull();
+            if (Boolean(winnerName)) {
+                roundResult = roundResults.WIN;
+            } else if (board.isFull()) {
+                roundResult = roundResults.TIE;
+            } else {
+                roundResult = roundResults.CONTINUE;
+            }
 
             return {
-                gameIsWon,
-                gameIsTied,
-                gameIsOver: gameIsWon || gameIsTied,
+                roundResult,
                 winnerName,
                 winningSequence,
             };
