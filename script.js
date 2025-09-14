@@ -211,8 +211,8 @@
 
             if (gameIsBeingStarted) {
                 gameController.start(
-                    getStartingPlayerName(),
-                    getOtherPlayerName(),
+                    getInputValue(elements.startingPlayerNameInput),
+                    getInputValue(elements.otherPlayerNameInput),
                 );
             } else {
                 gameController.reset();
@@ -247,14 +247,6 @@
             cellElement.dataset.column = column;
             cellElement.ariaLabel = `Play row ${row}, column ${column}`;
             return cellElement;
-        }
-
-        function getStartingPlayerName() {
-            return getInputValue(elements.startingPlayerNameInput);
-        }
-
-        function getOtherPlayerName() {
-            return getInputValue(elements.otherPlayerNameInput);
         }
 
         function getInputValue(input) {
