@@ -164,6 +164,10 @@
             );
         }
 
+        function handleBoardClick(event) {
+            // TODO
+        }
+
         return {
         };
     })();
