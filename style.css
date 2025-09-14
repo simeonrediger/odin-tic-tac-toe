@@ -65,9 +65,10 @@ body > * {
 
 .token.highlighted {
   filter:  /* Colorization workaround for using SVG images instead of markup */
-    sepia(80%)
-    saturate(600%)
-    hue-rotate(70deg);
+    sepia(100%)
+    saturate(800%)
+    hue-rotate(70deg)
+    brightness(90%);
 }
 
 #starting-player-token {
