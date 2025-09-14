@@ -192,7 +192,10 @@
 
         function handleBoardClick(event) {
 
-            if (!event.target.classList.contains('cell')) {
+            if (
+                !event.target.classList.contains('cell')
+                || !gameController.gameHasStarted()
+            ) {
                 return;
             }
 
