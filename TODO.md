@@ -40,3 +40,4 @@
 - Clean up multi-line expressions
 - Consider best module order
 - Consider renaming 'round'
+- Consider hiding `#announcements` when start text on button is shown

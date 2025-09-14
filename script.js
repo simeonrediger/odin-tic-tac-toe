@@ -219,7 +219,7 @@
             }
 
             toggleBoardInteractionCues(gameIsBeingStarted);
-            togglePlayerNameInputsVisibility();
+            toggleElementVisibility(elements.playerNameInputs);
             toggleStartButtonAppearance();
         }
 
@@ -284,8 +284,8 @@
             ]('interactable');
         }
 
-        function togglePlayerNameInputsVisibility() {
-            elements.playerNameInputs.classList.toggle('hidden');
+        function toggleElementVisibility(element) {
+            element.classList.toggle('hidden');
         }
 
         function toggleStartButtonAppearance() {
