@@ -163,10 +163,10 @@
             ),
             otherPlayerNameInput: document.querySelector('#other-player-name'),
             startButton: document.querySelector('#start-button'),
-            startingPlayerCellTemplate: document.querySelector('template')
-                .content.querySelector('#starting-player-cell'),
-            otherPlayerCellTemplate: document.querySelector('template')
-                .content.querySelector('#other-player-cell'),
+            startingPlayerTokenTemplate: document.querySelector('template')
+                .content.querySelector('#starting-player-token'),
+            otherPlayerTokenTemplate: document.querySelector('template')
+                .content.querySelector('#other-player-token'),
         };
 
         bindEvents();
