@@ -89,7 +89,7 @@
                 winningSequence,
             } = determineRoundResult();
 
-            if (gameIsWon || gameIsTied) {
+            if (gameIsOver) {
                 gameIsOngoing = false;
                 displayController.disableBoardInteractionCues();
             }

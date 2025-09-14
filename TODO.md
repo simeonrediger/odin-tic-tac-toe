@@ -41,3 +41,4 @@
 - Consider best module order
 - Consider renaming 'round'
 - Consider hiding `#announcements` when start text on button is shown
+- Consider using accessor method notation
