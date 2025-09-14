@@ -328,11 +328,11 @@
         function toggleStartButtonAppearance() {
             elements.startButton.classList.toggle('reset');
 
-            if (elements.startButton.textContent === startTextPrompt) {
-                elements.startButton.textContent = resetTextPrompt;
-            } else {
-                elements.startButton.textContent = startTextPrompt;
-            }
+            elements.startButton.textContent = (
+                elements.startButton.classList.contains('reset')
+                    ? resetTextPrompt
+                    : startTextPrompt
+            );
         }
 
         function addTokenToCell(row, column, playerNumber) {
