@@ -125,12 +125,15 @@
             let winningSequence = null;
 
             for (const sequence of winningSequences) {
-                if (sequenceHasWinner(sequence)) {
-                    const winnerNumber = board.getCellValue(...sequence[0]);
-                    winnerName = getPlayerByNumber(winnerNumber).name;
-                    winningSequence = sequence;
-                    break;
-                }
+
+                if (!sequenceHasWinner(sequence)) {
+                    continue;
+                };
+
+                const winnerNumber = board.getCellValue(...sequence[0]);
+                winnerName = getPlayerByNumber(winnerNumber).name;
+                winningSequence = sequence;
+                break;
             }
 
             if (Boolean(winnerName)) {
