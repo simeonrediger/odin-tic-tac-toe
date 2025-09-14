@@ -175,19 +175,19 @@
             for (let row = 0; row < boardSize; row++) {
 
                 for (let column = 0; column < boardSize; column++) {
-                    const cellButton = createCellButton(row, column);
-                    elements.board.append(cellButton);
+                    const cellElement = createCellElement(row, column);
+                    elements.board.append(cellElement);
                 }
             }
         }
 
-        function createCellButton(row, column) {
-            const cellButton = document.createElement('button');
-            cellButton.classList.add('cell');
-            cellButton.dataset.row = row;
-            cellButton.dataset.column = column;
-            cellButton.ariaLabel = `Play row ${row}, column ${column}`;
-            return cellButton;
+        function createCellElement(row, column) {
+            const cellElement = document.createElement('button');
+            cellElement.classList.add('cell');
+            cellElement.dataset.row = row;
+            cellElement.dataset.column = column;
+            cellElement.ariaLabel = `Play row ${row}, column ${column}`;
+            return cellElement;
         }
 
         return {
