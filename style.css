@@ -84,6 +84,7 @@ body > * {
 }
 
 #announcements {
+  font-weight: bold;
   margin-block: 1.05rem;
 }
 
