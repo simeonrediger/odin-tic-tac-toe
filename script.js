@@ -71,7 +71,7 @@
         function playRound(row, column) {
             switchActivePlayer();
 
-            board.getCell(row, column).setValue(activePlayer.getPlayerNumber());
+            board.getCell(row, column).setValue(getActivePlayerNumber());
             const winner = determineWinner();
 
             if (winner) {
@@ -94,6 +94,10 @@
             } else {
                 activePlayer = startingPlayer;
             }
+        }
+
+        function getActivePlayerNumber() {
+            return activePlayer.getPlayerNumber();
         }
 
         function determineWinner() {
@@ -143,7 +147,7 @@
         return {
             start,
             playRound,
-            getActivePlayer: () => activePlayer,
+            getActivePlayerNumber,
         };
     })();
 
