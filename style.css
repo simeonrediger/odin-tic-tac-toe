@@ -59,6 +59,14 @@ body > * {
   background-color: var(--gray);
 }
 
+#starting-player-token {
+  scale: 6;
+}
+
+#other-player-token {
+  scale: 4.5;
+}
+
 #player-name-inputs {
   border: none;
 }
