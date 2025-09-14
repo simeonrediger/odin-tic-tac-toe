@@ -216,9 +216,15 @@
 
             if (boardHasTokens()) {
                 clearTokens();
-                gameController.reset();
-            } else {
+            }
+
+            const gameIsBeingStarted = !elements.startButton.classList
+                .contains('reset');
+
+            if (gameIsBeingStarted) {
                 gameController.start();
+            } else {
+                gameController.reset();
             }
 
             toggleBoardInteractionCues(gameIsBeingStarted);
