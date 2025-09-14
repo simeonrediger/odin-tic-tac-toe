@@ -88,6 +88,11 @@
             const gameIsWon = Boolean(winner);
             const gameIsTied = !gameIsWon && board.isFull();
 
+            if (gameIsWon || gameIsTied) {
+                gameHasStarted = false;
+                displayController.disableBoardInteractionCues();
+            }
+
             if (gameIsWon) {
                 declareWinner(winner);
             } else if (gameIsTied) {
@@ -241,8 +246,8 @@
             return cellElement;
         }
 
-        function toggleBoardHoverAppearance() {
-            elements.board.classList.toggle('in-play');
+        function toggleBoardInteractionCues(enabled) {
+            elements.board.classList[enabled ? 'add' : 'remove']('in-play');
         }
 
         function toggleStartButtonAppearance() {
@@ -280,6 +285,11 @@
             elements.board.querySelectorAll('.token').forEach(token =>
                 token.remove()
             );
+        }
+
+        return {
+            disableBoardInteractionCues: () =>
+                toggleBoardInteractionCues(false),
         }
     })();
 })();
