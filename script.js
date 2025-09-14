@@ -221,7 +221,7 @@
                 gameController.start();
             }
 
-            toggleBoardHoverAppearance();
+            toggleBoardInteractionCues(gameIsBeingStarted);
             toggleStartButtonAppearance();
         }
 
