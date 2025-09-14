@@ -191,11 +191,9 @@
         }
 
         function handleBoardClick(event) {
+            const cellClicked = event.target.classList.contains('cell');
 
-            if (
-                !event.target.classList.contains('cell')
-                || !gameController.gameHasStarted()
-            ) {
+            if (!cellClicked || !gameController.gameHasStarted()) {
                 return;
             }
 
