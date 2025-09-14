@@ -78,7 +78,7 @@
         }
 
         function playRound(row, column) {
-            board.setCellValue(row, column, getActivePlayerNumber());
+            board.setCellValue(row, column, activePlayer.number);
 
             const {
                 gameIsWon,
@@ -110,10 +110,6 @@
             } else {
                 activePlayer = startingPlayer;
             }
-        }
-
-        function getActivePlayerNumber() {
-            return activePlayer.number;
         }
 
         function determineRoundResult() {
@@ -171,7 +167,7 @@
             start,
             reset,
             playRound,
-            getActivePlayerNumber,
+            getActivePlayerNumber: () => activePlayer.number,
         };
     })();
 
