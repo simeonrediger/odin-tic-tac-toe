@@ -107,3 +107,7 @@ button {
 #start-button.reset {
   background-color: var(--red);
 }
+
+.hidden {
+  display: none;
+}

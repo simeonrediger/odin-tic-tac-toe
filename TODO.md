@@ -38,3 +38,4 @@
 - Fix `getPlayerByPlayerNumber`
 - Consider using `element.closest()`
 - Clean up multi-line expressions
+- Consider best module order

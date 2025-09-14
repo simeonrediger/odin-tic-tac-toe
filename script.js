@@ -228,6 +228,7 @@
             }
 
             toggleBoardInteractionCues(gameIsBeingStarted);
+            togglePlayerNameInputsVisibility();
             toggleStartButtonAppearance();
         }
 
@@ -258,6 +259,10 @@
 
         function toggleBoardInteractionCues(enabled) {
             elements.board.classList[enabled ? 'add' : 'remove']('in-play');
+        }
+
+        function togglePlayerNameInputsVisibility() {
+            elements.playerNameInputs.classList.toggle('hidden');
         }
 
         function toggleStartButtonAppearance() {
