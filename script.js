@@ -10,6 +10,10 @@
             return grid.every(row => row.every(cellValue => cellValue !== 0));
         }
 
+        function isEmpty() {
+            return grid.every(row => row.every(cellValue => cellValue === 0));
+        }
+
         function clear() {
 
             for (let row = 0; row < size; row++) {
@@ -25,6 +29,7 @@
             getCellValue: (row, column) => grid[row][column],
             setCellValue: (row, column, value) => grid[row][column] = value,
             isFull,
+            isEmpty,
         };
     })();
 
@@ -228,7 +233,7 @@
 
         function handleStartButtonClick() {
 
-            if (boardHasTokens()) {
+            if (!board.isEmpty()) {
                 clearTokens();
             }
 
@@ -249,10 +254,6 @@
             toggleElementVisibility(elements.announcements);
             toggleElementVisibility(elements.playerNameInputs);
             toggleStartButtonAppearance();
-        }
-
-        function boardHasTokens() {
-            return Boolean(elements.board.querySelector('.token'));
         }
 
         function renderBoard() {
