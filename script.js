@@ -55,9 +55,9 @@
             [[0, 2], [1, 1], [2, 0]],  // top-right-to-bottom-left diagnoal
         ]);
 
-        function start() {
-            startingPlayer = createPlayer('Player 1');
-            otherPlayer = createPlayer('Player 2');
+        function start(startingPlayerName, otherPlayerName) {
+            startingPlayer = createPlayer(startingPlayerName);
+            otherPlayer = createPlayer(otherPlayerName);
             startingPlayer.setPlayerNumber(1);
             otherPlayer.setPlayerNumber(2);
 
@@ -222,7 +222,10 @@
                 .contains('reset');
 
             if (gameIsBeingStarted) {
-                gameController.start();
+                gameController.start(
+                    getStartingPlayerName(),
+                    getOtherPlayerName(),
+                );
             } else {
                 gameController.reset();
             }
@@ -255,6 +258,23 @@
             cellElement.dataset.column = column;
             cellElement.ariaLabel = `Play row ${row}, column ${column}`;
             return cellElement;
+        }
+
+        function getStartingPlayerName() {
+            return getInputValue(elements.startingPlayerNameInput);
+        }
+
+        function getOtherPlayerName() {
+            return getInputValue(elements.otherPlayerNameInput);
+        }
+
+        function getInputValue(input) {
+
+            if (input.value.trim() === '') {
+                return input.placeholder;
+            } else {
+                return input.value;
+            }
         }
 
         function toggleBoardInteractionCues(enabled) {
