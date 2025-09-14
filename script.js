@@ -95,9 +95,9 @@
             }
 
             if (gameIsWon) {
-                displayController.announceWinner(winnerName);
+                displayController.indicateWin(winnerName);
             } else if (gameIsTied) {
-                displayController.announceTie();
+                displayController.indicateTie();
             } else {
                 displayController.promptPlayer(activePlayer.getName());
             }
@@ -283,11 +283,11 @@
                 `${playerName}'s turn to play`;
         }
 
-        function announceWinner(winnerName) {
+        function indicateWin(winnerName) {
             elements.announcements.textContent = `${winnerName} wins!`;
         }
 
-        function announceTie() {
+        function indicateTie() {
             elements.announcements.textContent = `It's a tie!`;
         }
 
@@ -340,8 +340,8 @@
 
         return {
             promptPlayer,
-            announceWinner,
-            announceTie,
+            indicateWin,
+            indicateTie,
             disableBoardInteractionCues: () =>
                 toggleBoardInteractionCues(false),
         }
