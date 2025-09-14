@@ -236,6 +236,7 @@
                 );
             } else {
                 gameController.reset();
+                removeCellHighlighting();
             }
 
             toggleBoardInteractionCues(gameIsBeingStarted);
@@ -299,6 +300,12 @@
                     `[data-row='${row}'][data-column='${column}']`
                 ).classList.add('highlighted');
             }
+        }
+
+        function removeCellHighlighting() {
+            document.querySelectorAll('.cell.highlighted').forEach(cell =>
+                cell.classList.remove('highlighted')
+            );
         }
 
         function toggleBoardInteractionCues(enabled) {
