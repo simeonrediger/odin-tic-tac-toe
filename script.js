@@ -79,7 +79,6 @@
 
         function playRound(row, column) {
             board.setCellValue(row, column, getActivePlayerNumber());
-            switchActivePlayer();
 
             const {
                 gameIsWon,
@@ -99,6 +98,7 @@
             } else if (gameIsTied) {
                 displayController.indicateTie();
             } else {
+                switchActivePlayer();
                 displayController.promptPlayer(activePlayer.getName());
             }
         }
