@@ -44,3 +44,4 @@
 - Consider encapsulating knowledge that a cell is empty
 
 # Feedback
+- Consider highlighting 2 winning sequences if present

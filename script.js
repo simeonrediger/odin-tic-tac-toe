@@ -10,10 +10,6 @@
             return grid.every(row => row.every(cellValue => cellValue !== 0));
         }
 
-        function isEmpty() {
-            return grid.every(row => row.every(cellValue => cellValue === 0));
-        }
-
         function clear() {
 
             for (let row = 0; row < size; row++) {
@@ -29,7 +25,6 @@
             getCellValue: (row, column) => grid[row][column],
             setCellValue: (row, column, value) => grid[row][column] = value,
             isFull,
-            isEmpty,
         };
     })();
 
@@ -239,10 +234,7 @@
         }
 
         function handleStartButtonClick() {
-
-            if (!board.isEmpty()) {
-                clearTokens();
-            }
+            clearTokens();
 
             const gameIsBeingStarted = !elements.startButton.classList
                 .contains('reset');
