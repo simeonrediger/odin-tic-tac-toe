@@ -12,6 +12,4 @@
 # Code style
 - Standardize object literal key order
 - Standardize object literal property/method/accessor notation
-- Standardize array constructor use
 - Standardize multi-line assignment/expression formatting
-- Consider if any variables (like `board`'s `size`) should be capitalized

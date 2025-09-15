@@ -24,13 +24,13 @@
         let otherPlayer;
         let activePlayer;
 
-        const roundResults = Object.freeze({
+        const ROUND_RESULTS = Object.freeze({
             ONGOING: Symbol('ongoing'),
             WIN: Symbol('win'),
             TIE: Symbol('tie'),
         });
 
-        const winnableSequences = Object.freeze([
+        const WINNABLE_SEQUENCES = Object.freeze([
             [[0, 0], [0, 1], [0, 2]],  // top row
             [[1, 0], [1, 1], [1, 2]],  // middle row
             [[2, 0], [2, 1], [2, 2]],  // bottom row
@@ -79,7 +79,7 @@
                 wonSequences,
             } = determineRoundResult();
 
-            gameIsOngoing = roundResult === roundResults.ONGOING;
+            gameIsOngoing = roundResult === ROUND_RESULTS.ONGOING;
 
             if (gameIsOngoing) {
                 switchActivePlayer();
@@ -87,7 +87,7 @@
 
             const report = {
                 gameIsOngoing,
-                gameIsWon: roundResult === roundResults.WIN,
+                gameIsWon: roundResult === ROUND_RESULTS.WIN,
                 activePlayerName: gameIsOngoing ? activePlayer.name : null,
                 winnerName,
                 wonSequences,
@@ -106,7 +106,7 @@
             let winnerName = null;
             let wonSequences = [];
 
-            for (const sequence of winnableSequences) {
+            for (const sequence of WINNABLE_SEQUENCES) {
 
                 if (!sequenceHasWinner(sequence)) {
                     continue;
@@ -122,11 +122,11 @@
             }
 
             if (Boolean(winnerName)) {
-                roundResult = roundResults.WIN;
+                roundResult = ROUND_RESULTS.WIN;
             } else if (board.isFull()) {
-                roundResult = roundResults.TIE;
+                roundResult = ROUND_RESULTS.TIE;
             } else {
-                roundResult = roundResults.ONGOING;
+                roundResult = ROUND_RESULTS.ONGOING;
             }
 
             return {
