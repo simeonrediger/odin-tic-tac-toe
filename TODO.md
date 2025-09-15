@@ -42,6 +42,3 @@
 - Consider using accessor method notation
 - Consider changing token colors for a tie
 - Consider encapsulating knowledge that a cell is empty
-
-# Feedback
-- Consider highlighting 2 winning sequences if present

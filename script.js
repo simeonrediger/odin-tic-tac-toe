@@ -40,7 +40,7 @@
             TIE: Symbol('tie'),
         });
 
-        const winningSequences = Object.freeze([
+        const winnableSequences = Object.freeze([
             [[0, 0], [0, 1], [0, 2]],  // top row
             [[1, 0], [1, 1], [1, 2]],  // middle row
             [[2, 0], [2, 1], [2, 2]],  // bottom row
@@ -86,7 +86,7 @@
             const {
                 roundResult,
                 winnerName,
-                winningSequence,
+                wonSequences,
             } = determineRoundResult();
 
             gameIsOngoing = roundResult === roundResults.ONGOING;
@@ -100,7 +100,7 @@
                 gameIsWon: roundResult === roundResults.WIN,
                 activePlayerName: gameIsOngoing ? activePlayer.name : null,
                 winnerName,
-                winningSequence,
+                wonSequences,
             };
 
             return report;
@@ -114,9 +114,9 @@
         function determineRoundResult() {
             let roundResult;
             let winnerName = null;
-            let winningSequence = null;
+            let wonSequences = [];
 
-            for (const sequence of winningSequences) {
+            for (const sequence of winnableSequences) {
 
                 if (!sequenceHasWinner(sequence)) {
                     continue;
@@ -124,8 +124,11 @@
 
                 const winnerNumber = board.getCellValue(...sequence[0]);
                 winnerName = getPlayerByNumber(winnerNumber).name;
-                winningSequence = sequence;
-                break;
+                wonSequences.push(sequence);
+
+                if (wonSequences.length >= 2) {
+                    break;
+                }
             }
 
             if (Boolean(winnerName)) {
@@ -139,7 +142,7 @@
             return {
                 roundResult,
                 winnerName,
-                winningSequence,
+                wonSequences: wonSequences,
             };
         }
 
@@ -226,7 +229,7 @@
                 toggleBoardInteractionCues(false);
 
                 if (report.gameIsWon) {
-                    indicateWin(report.winnerName, report.winningSequence);
+                    indicateWin(report.winnerName, report.wonSequences);
                 } else {
                     indicateTie();
                 }
@@ -294,9 +297,12 @@
                 `${playerName}'s turn to play`;
         }
 
-        function indicateWin(winnerName, winningSequence) {
+        function indicateWin(winnerName, wonSequences) {
             elements.announcements.textContent = `${winnerName} wins!`;
-            highlightTokensInSequence(winningSequence);
+
+            for (const sequence of wonSequences) {
+                highlightTokensInSequence(sequence);
+            }
         }
 
         function indicateTie() {
