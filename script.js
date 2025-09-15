@@ -35,7 +35,7 @@
         let activePlayer;
 
         const roundResults = Object.freeze({
-            CONTINUE: Symbol('continue'),
+            ONGOING: Symbol('continue'),
             WIN: Symbol('win'),
             TIE: Symbol('tie'),
         });
@@ -89,14 +89,14 @@
                 winningSequence,
             } = determineRoundResult();
 
-            gameIsOngoing = roundResult === roundResults.CONTINUE;
+            gameIsOngoing = roundResult === roundResults.ONGOING;
 
             if (gameIsOngoing) {
                 switchActivePlayer();
             }
 
             const report = {
-                gameContinues: gameIsOngoing,
+                gameIsOngoing,
                 gameIsWon: roundResult === roundResults.WIN,
                 activePlayerName: gameIsOngoing ? activePlayer.name : null,
                 winnerName,
@@ -133,7 +133,7 @@
             } else if (board.isFull()) {
                 roundResult = roundResults.TIE;
             } else {
-                roundResult = roundResults.CONTINUE;
+                roundResult = roundResults.ONGOING;
             }
 
             return {
@@ -220,7 +220,7 @@
             addTokenToCell(row, column, gameController.getActivePlayerNumber());
             const report = gameController.playRound(row, column);
 
-            if (report.gameContinues) {
+            if (report.gameIsOngoing) {
                 promptPlayer(report.activePlayerName);
             } else {
                 toggleBoardInteractionCues(false);
