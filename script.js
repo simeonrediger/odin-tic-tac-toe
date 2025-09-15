@@ -64,7 +64,12 @@
 
             gameIsOngoing = true;
             activePlayer = startingPlayer;
-            displayController.promptPlayer(activePlayer.name);
+
+            const report = {
+                activePlayerName: activePlayer.name,
+            };
+
+            return report;
         }
 
         function reset() {
@@ -89,26 +94,21 @@
                 winningSequence,
             } = determineRoundResult();
 
-            if (roundResult !== roundResults.CONTINUE) {
-                gameIsOngoing = false;
-                displayController.disableBoardInteractionCues();
+            gameIsOngoing = roundResult === roundResults.CONTINUE;
+
+            if (gameIsOngoing) {
+                switchActivePlayer();
             }
 
-            switch (roundResult) {
+            const report = {
+                gameContinues: gameIsOngoing,
+                gameIsWon: roundResult === roundResults.WIN,
+                activePlayerName: activePlayer.name,
+                winnerName,
+                winningSequence,
+            };
 
-                case roundResults.CONTINUE:
-                    switchActivePlayer();
-                    displayController.promptPlayer(activePlayer.name);
-                    break;
-
-                case roundResults.WIN:
-                    displayController.indicateWin(winnerName, winningSequence);
-                    break;
-
-                case roundResults.TIE:
-                    displayController.indicateTie();
-                    break;
-            }
+            return report;
         }
 
         function switchActivePlayer() {
@@ -223,7 +223,19 @@
             const column = Number(cellElement.dataset.column);
 
             addTokenToCell(row, column, gameController.getActivePlayerNumber());
-            gameController.playRound(row, column);
+            const report = gameController.playRound(row, column);
+
+            if (report.gameContinues) {
+                promptPlayer(report.activePlayerName);
+            } else {
+                toggleBoardInteractionCues(false);
+
+                if (report.gameIsWon) {
+                    indicateWin(report.winnerName, report.winningSequence);
+                } else {
+                    indicateTie();
+                }
+            }
         }
 
         function handleStartButtonClick() {
@@ -236,10 +248,14 @@
                 .contains('reset');
 
             if (gameIsBeingStarted) {
-                gameController.start(
+
+                const report = gameController.start(
                     getInputValue(elements.startingPlayerNameInput),
                     getInputValue(elements.otherPlayerNameInput),
                 );
+
+                promptPlayer(report.activePlayerName);
+
             } else {
                 gameController.reset();
                 removeTokenHighlighting();
@@ -346,14 +362,6 @@
             elements.board.querySelectorAll('.token').forEach(token =>
                 token.remove()
             );
-        }
-
-        return {
-            promptPlayer,
-            indicateWin,
-            indicateTie,
-            disableBoardInteractionCues: () =>
-                toggleBoardInteractionCues(false),
         }
     })();
 })();
