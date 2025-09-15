@@ -10,18 +10,8 @@
             return grid.every(row => row.every(cellValue => cellValue !== 0));
         }
 
-        function clear() {
-
-            for (let row = 0; row < size; row++) {
-
-                for (let column = 0; column < size; column++) {
-                    grid[row][column] = 0;
-                }
-            }
-        }
-
         return {
-            clear,
+            clear: () => grid.forEach(row => row.fill(0)),
             getCellValue: (row, column) => grid[row][column],
             setCellValue: (row, column, value) => grid[row][column] = value,
             isFull,
