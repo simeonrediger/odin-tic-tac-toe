@@ -98,7 +98,7 @@
             const report = {
                 gameContinues: gameIsOngoing,
                 gameIsWon: roundResult === roundResults.WIN,
-                activePlayerName: activePlayer.name,
+                activePlayerName: gameIsOngoing ? activePlayer.name : null,
                 winnerName,
                 winningSequence,
             };
