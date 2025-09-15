@@ -71,6 +71,14 @@ body > * {
     brightness(90%);
 }
 
+#board.faded .token {
+    filter:  /* Colorization workaround for using SVG images instead of markup */
+      sepia(100%)
+      saturate(800%)
+      hue-rotate(-70deg)
+      brightness(70%);
+}
+
 .starting-player.token {
   scale: 6;
 }

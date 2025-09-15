@@ -297,6 +297,7 @@
 
         function indicateTie() {
             elements.announcements.textContent = `It's a tie!`;
+            elements.board.classList.add('faded');
         }
 
         function highlightTokensInSequence(sequence) {
@@ -309,6 +310,7 @@
         }
 
         function removeTokenHighlighting() {
+            elements.board.classList.remove('faded');
             document.querySelectorAll('.token.highlighted').forEach(token =>
                 token.classList.remove('highlighted')
             );
