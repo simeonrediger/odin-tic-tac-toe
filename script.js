@@ -25,7 +25,7 @@
         let activePlayer;
 
         const roundResults = Object.freeze({
-            ONGOING: Symbol('continue'),
+            ONGOING: Symbol('ongoing'),
             WIN: Symbol('win'),
             TIE: Symbol('tie'),
         });
