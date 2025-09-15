@@ -3,15 +3,15 @@
     const board = (function () {
         const size = 3;
         const grid = Array.from({ length: size }, () =>
-            new Array(size).fill(0)
+            new Array(size).fill(null)
         );
 
         function isFull() {
-            return grid.every(row => row.every(cellValue => cellValue !== 0));
+            return grid.every(row => row.every(cellValue => cellValue !== null));
         }
 
         return {
-            clear: () => grid.forEach(row => row.fill(0)),
+            clear: () => grid.forEach(row => row.fill(null)),
             getCellValue: (row, column) => grid[row][column],
             setCellValue: (row, column, value) => grid[row][column] = value,
             isFull,
@@ -139,7 +139,7 @@
         function sequenceHasWinner(sequence) {
             const firstCellValue = board.getCellValue(...sequence[0]);
 
-            if (firstCellValue === 0) {
+            if (firstCellValue === null) {
                 return false;
             }
 
