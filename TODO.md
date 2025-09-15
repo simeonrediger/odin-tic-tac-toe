@@ -1,44 +1,14 @@
-# Project directions
-- Store game board as an array inside of a `GameBoard` object
-- Store players in objects
-- Control the flow of the game itself with an object
-- Minimize global code
-    - Tuck as much code into factories as possible
-    - Singleton instances should use the module pattern
-- Get the game working in the console first
-    - Include checks for when the game is over
-        - Check for all 3-in-a-rows and ties
-    - Avoid thinking about the DOM until the game is working
-    - Call functions and pass arguments to play the game
-    - Don't worry about getting user input yet
-- Create an object that will handle the display logic
-    - Write a function to render contents from the game board array to the page
-        - You can fill the array with Xs and Os to see what's going on
-- Write the functions that allow players to mark specific squares on the board
-    - Prevent players from playing on taken squares
-- Allow players to enter their names
-- Include a button to start/restart the game
-- Display the results when the game is finished
+# Content
+- Consider hardcoding cell elements in HTML
 
-# Other
-- Consider implementing default values
-- Consider if board and players should/shouldn't be in game controller module
+# Logic
 - Add error handling
-- Consider standardized ordering of factory return object properties
-- Consider a single source of truth for the board size
-- Consider if board size variable name should be capitalized
-- Refine function names to adhere to single responsibility principle
-- Look up player by player number
-- Standarize array construction notation
-- Support RTL
-- Consider hardcoding board cells in HTML
 - Consider using order-based cell index instead of row-column lookup
-- Consider using `null` for empty cell values
-- Standardize object literal method notation
-- Fix `getPlayerByPlayerNumber()`
-- Clean up multi-line expressions
-- Consider best module order
-- Consider renaming 'round'
-- Consider using accessor method notation
-- Consider changing token colors for a tie
 - Consider encapsulating knowledge that a cell is empty
+
+# Code style
+- Standardize object literal key order
+- Standardize object literal property/method/accessor notation
+- Standardize array constructor use
+- Standardize multi-line assignment/expression formatting
+- Consider if any variables (like `board`'s `size`) should be capitalized
