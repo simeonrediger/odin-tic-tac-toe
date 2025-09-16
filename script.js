@@ -43,6 +43,8 @@
             [[0, 2], [1, 1], [2, 0]],  // top-right-to-bottom-left diagnoal
         ]);
 
+        WINNABLE_SEQUENCES.forEach(Object.freeze);
+
         function start(startingPlayerName, otherPlayerName) {
             startingPlayer = createPlayer(1, startingPlayerName);
             otherPlayer = createPlayer(2, otherPlayerName);
